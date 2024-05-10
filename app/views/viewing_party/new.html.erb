@@ -1,0 +1,23 @@
+<h1> <%=@movie.title%> </h1>
+
+<%= form_with(model: @model, url: user_movie_viewing_party_index_path(@user, @movie.id), method: :post) do |form| %>
+  <%= form.label :date, "Select a Date:" %>
+  <%= form.date_field :date, min: Date.today, class: "form-control" %>
+
+  <%= form.label :time, "Select a Time:" %>
+  <%= form.time_field :time, class: "form-control" %><br>
+  
+  <%= form.label :duration, "Duration of Party (in minutes):" %>
+  <%= form.number_field :duration, class: "form-control" %><br>
+
+  <%= form.label :guests, "Guest email" %>
+  <%= form.text_field :guests %><br>
+  
+  <%= form.label :guests, "Guest Emails (up to three, optional):" %><br>
+  <%= form.email_field :guest1, class: "form-control", placeholder: "Guest Email 1" %><br>
+  <%= form.email_field :guest2, class: "form-control", placeholder: "Guest Email 2" %><br>
+  <%= form.email_field :guest3, class: "form-control", placeholder: "Guest Email 3" %><br>
+
+
+  <%= form.submit "Submit", class: "btn btn-primary" %>
+<% end %>
